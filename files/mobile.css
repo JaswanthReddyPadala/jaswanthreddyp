@@ -218,10 +218,12 @@ flex-direction: row;
     height:100%;
 }
 .project_description h1{
-    font-size:1.2rem;
+    font-size:1.3rem;
+    font-weight:500;
 }
 .project_description p{
-margin-bottom:1rem;
+margin-bottom:1.1rem;
+
 }
 .project_expand{
     width: 100vw;
@@ -283,6 +285,7 @@ height:120px;
 }
 .blog_name{
     font-size:1.5rem;
+    font-weight:500;
 }
 .blog_item{
     border: 0;
