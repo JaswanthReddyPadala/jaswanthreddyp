@@ -428,7 +428,7 @@ hr{
     border-radius: 100px;
     border:5px solid var(--yellow);
     color:var(--hai);
-    padding:0.2rem 1rem;
+    padding:0rem 1rem;
 }
 
 .play p{
@@ -729,11 +729,12 @@ font-weight: 700;
 }
 
 .blog_item a{
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color:var(--grey);
     text-decoration: underline;
     margin-top: 1rem;
     align-self: flex-end;
+
 }
 .blog_date{
     display: none;

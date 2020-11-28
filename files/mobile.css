@@ -35,9 +35,6 @@
     .home_end{
         display: none;
     }
-    #about{
-padding: 7vh 3vw;   
- }
  .aboutme,  .skills{
      padding-right: 0;
      width:90vw;
@@ -77,7 +74,6 @@ padding: 7vh 3vw;
 }
 .contact_top{
     flex-direction: column;
-    height:65vh;
 }
 #contact-send{
     margin-left: 5%;
@@ -85,9 +81,7 @@ padding: 7vh 3vw;
 #contact-name, #contact-email, #contact-comment{
     margin-bottom:5%;
 }
-.contact_details{
-    flex-direction: column;
-}
+
 
 .social{
     flex-direction: row;
@@ -221,11 +215,15 @@ padding: 7vh 3vw;
     height:50px;
 }
 .contact_details{
-    padding:2% 5%;
+    padding:2% 6%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
     text-align: left;
 }
 .contact_details h1{
-    margin:1.5rem;
+    margin:1.5rem 0;
 }
 .social{
 flex-direction: row;
@@ -245,10 +243,7 @@ flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.project_description{
-    padding-left:0;
-    padding-left: 1rem;
-}
+
 .project_item{
     width:70vw;
     height:150px;;
@@ -257,13 +252,18 @@ flex-direction: row;
 
 .project_info{
     width:80vw;
+    margin-left:0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 }
 .project_image{
     height:100%;
+}
+
+.project_description{
+    margin-left: 0;
 }
 .project_description h1{
     font-size:1.3rem;
@@ -293,9 +293,6 @@ margin-bottom:1.1rem;
 }
 #contact-name, #contact-email, #contact-comment{
     margin-bottom:10%;
-}
-.contact_top{
-    width:100vw;
 }
 #contact-comment{
     width:80vw;
@@ -335,7 +332,7 @@ height:120px;
 }
 .blog_name{
     font-size:1.5rem;
-    font-weight:500;
+    font-weight:600;
 }
 .blog_item{
     border: 0;
