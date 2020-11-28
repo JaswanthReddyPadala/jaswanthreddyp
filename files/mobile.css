@@ -1,3 +1,11 @@
+@media screen and (max-width:1250px){
+    .aboutme h1{
+        font-size: 2rem;
+    }
+    #home, #about, #work, #contact{
+        padding:2% 5%;
+    }
+}
 @media screen and (max-width:1000px){
 
     .mypicture{
@@ -9,8 +17,11 @@
     padding:5px 10px;
     align-items: center;
    }
+   .logo{
+       font-size:2rem;
+   }
     .nav_item{
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
     .home_right{
      margin-left:1rem;   
@@ -30,12 +41,17 @@ padding: 7vh 3vw;
  .aboutme,  .skills{
      padding-right: 0;
      width:90vw;
+     font-size: 2rem;
      margin-left: 2.5vw;
      height:max-content;
      padding-bottom: 1rem;
      margin-bottom: 2rem;
 }
+.aboutme p{
+    font-size: 2rem;
+}
 .aboutme h1, .skills h1{
+    font-size: 2rem;
     text-align: center;
 }
 .skill_set{
@@ -49,7 +65,11 @@ padding: 7vh 3vw;
     margin:1rem;
 }
 #contact{
-    padding: 7vh 3vw 5vh 3vw;   
+    padding:0vh 3vw;
+    width:100vw;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
     flex-direction: column;
 }
 .contactme{
@@ -62,16 +82,20 @@ padding: 7vh 3vw;
 #contact-send{
     margin-left: 5%;
 }
+#contact-name, #contact-email, #contact-comment{
+    margin-bottom:5%;
+}
 .contact_details{
     flex-direction: column;
 }
+
 .social{
     flex-direction: row;
     width:100%;
     margin-bottom: 1rem;
 }
 .social a{
-   margin:2rem;
+    margin:4rem;
 }
 .blog_item{
     padding:3vh 0vw;
@@ -143,12 +167,16 @@ padding: 7vh 3vw;
     }
     .home_right{
         width:100vw;
-        padding:2% 10%;
+        padding:2% 5%;
         text-align: center;
         margin:0;
     }
     .home_right h1{
         color:var(--hai);
+        font-size: 3rem;
+    }
+    .home_right p:last-child{
+        font-size: 1.2rem;
     }
     .home_right h1::before{
         text-align: center;
@@ -158,13 +186,33 @@ padding: 7vh 3vw;
     }
     .home_right p:last-child{
         margin-top:1rem;
-        width:100vw;
         transform: translate(0%);
     }
     hr{
         transform: translate(0%);
     }
-
+    .aboutme {
+        border-bottom: 0;
+        padding-bottom: 1vh;
+        padding-top: 5vh;
+    }
+    .skills{
+        padding-top: 1vh;
+    }
+    .skills h1{
+        margin-bottom:0;    
+    }
+    .skill_set{
+        justify-content:flex-start;
+        flex-flow: row wrap;
+        align-items: center;
+    }
+    .aboutme h1{
+        font-size: 2.1rem;
+    }
+    .aboutme p{
+        font-size: 1.6rem;
+    }
 
 
 .contact_item{
@@ -183,7 +231,7 @@ padding: 7vh 3vw;
 flex-direction: row;
 }
 .social a{
-    margin:1rem;
+    margin:5%;
 }
 .projects{
     padding-top:10vh;
@@ -240,9 +288,11 @@ margin-bottom:1.1rem;
 }
 #contact-name, #contact-email{
     width:80vw;
-    margin-bottom: 0.6rem;
     font-size:1.1rem;
     border-width: 2px;
+}
+#contact-name, #contact-email, #contact-comment{
+    margin-bottom:10%;
 }
 .contact_top{
     width:100vw;
