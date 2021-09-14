@@ -66,8 +66,7 @@
     width:100vw;
     justify-content: center;
     align-items: center;
-    height:100vh;
-    flex-direction: column;
+        flex-direction: column;
 }
 .contactme{
     text-align: center;
@@ -92,13 +91,10 @@
     margin:4rem;
 }
 .blog_item{
-    padding:3vh 0vw;
+    padding:1vh 0vw;
 }
 .blog_embed{
     width:100%;
-}
-.blog_date{
-    display: none;
 }
 }  
 
@@ -107,7 +103,7 @@
 
 
 
-@media screen and (max-width:728px){
+@media screen and (max-width:900px){
     html{
         font-size:12px;
     }
@@ -210,7 +206,7 @@
 
 
 .contact_item{
-    width:50px;
+    width:70px;
     font-size: 0.8rem;
     height:50px;
 }
@@ -279,13 +275,7 @@ margin-bottom:1.1rem;
     font-size:2rem;
 }
 
-.social{
-    margin-bottom: 4rem;
-}
-#contact{
-    width:100vw;
-    height:100vh;
-}
+
 #contact-name, #contact-email{
     width:80vw;
     font-size:1.1rem;
@@ -336,6 +326,7 @@ height:120px;
 }
 .blog_item{
     border: 0;
-}
+        margin:1rem;
 
+}
 }
