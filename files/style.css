@@ -320,7 +320,6 @@ hr{
 }
 .skill_item:hover{
     transition: all 0.2s ease-in-out;
-    transform: scale(1.1) translateY(-10px);
     border:2px solid var(--hai);
     background-color: var(--hai);
     color:var(--yellow);
@@ -601,9 +600,9 @@ letter-spacing: 0.15rem;
     margin:1rem;
 }
 .contact_item:hover{
-    width:100px;
+    /* width:100px;
     height:100px;
-    font-size: 1rem;
+    font-size: 1rem; */
     transition: all 0.3s ease-in-out;
     color:var(--hai);
     background-color: var(--yellow);
@@ -613,12 +612,11 @@ letter-spacing: 0.15rem;
 width:100vw;
 height:max-content;
 overflow-x: hidden;
-/* background-color: #6A7B83; */
 height:max-content;
 padding:2vh 5vw;
 justify-content: center;
 align-items: center;
-margin-bottom: 2rem;
+margin-bottom: 5rem;
 display: flex;
 border-width: 2px;
 }
