@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const projects = [
   {
@@ -30,61 +32,62 @@ const projects = [
   },
 ];
 
-function HoverCard({ as: Tag = 'div', children, baseStyle, ...props }) {
+const ease = [0.22, 1, 0.36, 1];
+
+function ProjectCard({ num, name, desc, tags, wip, url, internal, index }) {
   const [hovered, setHovered] = useState(false);
+  const isClickable = !!url && !internal;
+  const Tag = isClickable ? motion.a : motion.div;
+
   return (
     <Tag
-      {...props}
-      style={{
-        ...baseStyle,
-        background: hovered ? '#161616' : '#111',
-        borderColor: hovered ? 'rgba(245,240,232,0.15)' : 'var(--border)',
-      }}
+      href={isClickable ? url : undefined}
+      target={isClickable ? '_blank' : undefined}
+      rel={isClickable ? 'noopener noreferrer' : undefined}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.55, delay: index * 0.1, ease }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      animate={{
+        background: hovered ? '#161616' : '#111',
+        borderColor: hovered ? 'rgba(245,240,232,0.15)' : 'rgba(245,240,232,0.08)',
+      }}
+      className="proj-card"
+      style={{
+        display: 'grid', gridTemplateColumns: 'auto 1fr auto',
+        gap: '2rem', alignItems: 'start',
+        border: '1px solid var(--border)',
+        padding: '2.2rem', color: 'inherit',
+        position: 'relative', overflow: 'hidden',
+        cursor: isClickable ? 'pointer' : 'default',
+        textDecoration: 'none',
+      }}
     >
-      {children(hovered)}
-    </Tag>
-  );
-}
+      {/* Animated left accent bar */}
+      <motion.div
+        animate={{ scaleY: hovered ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          position: 'absolute', left: 0, top: 0, bottom: 0,
+          width: '3px', background: 'var(--red)', transformOrigin: 'top',
+        }}
+      />
 
-function ProjectCard({ num, name, desc, tags, wip, url, internal }) {
-  const isClickable = !!url && !internal;
+      {/* Project number */}
+      <motion.div
+        animate={{ color: hovered ? 'rgba(255,45,0,0.35)' : 'rgba(255,45,0,0.15)' }}
+        transition={{ duration: 0.3 }}
+        style={{
+          fontFamily: 'var(--serif)', fontSize: '2.5rem',
+          fontWeight: 900, fontStyle: 'italic', lineHeight: 1, minWidth: '60px',
+        }}
+      >{num}</motion.div>
 
-  const baseStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr auto',
-    gap: '2rem', alignItems: 'start',
-    border: '1px solid var(--border)',
-    padding: '2.2rem', color: 'inherit',
-    transition: 'border-color .2s, background .2s',
-    position: 'relative', overflow: 'hidden',
-    cursor: isClickable ? 'pointer' : 'default',
-    textDecoration: 'none',
-  };
-
-  const content = (hovered) => (
-    <>
-      <div style={{
-        position: 'absolute', left: 0, top: 0, bottom: 0,
-        width: '3px', background: 'var(--red)',
-        transform: hovered ? 'scaleY(1)' : 'scaleY(0)',
-        transformOrigin: 'top', transition: 'transform .3s',
-      }} />
-      <div style={{
-        fontFamily: 'var(--serif)', fontSize: '2.5rem',
-        fontWeight: 900, fontStyle: 'italic',
-        color: 'rgba(255,45,0,0.15)', lineHeight: 1, minWidth: '60px',
-      }}>{num}</div>
       <div>
-        <div style={{
-          fontFamily: 'var(--serif)', fontSize: '1.3rem',
-          fontWeight: 900, marginBottom: '0.4rem',
-        }}>{name}</div>
-        <p style={{
-          fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.7,
-          marginBottom: '0.8rem', maxWidth: '480px',
-        }}>{desc}</p>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: '1.3rem', fontWeight: 900, marginBottom: '0.4rem' }}>{name}</div>
+        <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '0.8rem', maxWidth: '480px' }}>{desc}</p>
         <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
           {tags.map(t => (
             <span key={t} style={{
@@ -106,59 +109,66 @@ function ProjectCard({ num, name, desc, tags, wip, url, internal }) {
           )}
         </div>
       </div>
-      <div style={{
-        fontSize: '1.2rem',
-        color: hovered ? 'var(--cream)' : 'var(--muted)',
-        transform: hovered ? 'translate(3px,-3px)' : 'none',
-        transition: 'color .2s, transform .2s',
-        paddingTop: '0.5rem',
-        opacity: internal ? 0.25 : 1,
-      }}>
-        {internal ? '⚙' : '↗'}
-      </div>
-    </>
-  );
 
-  return (
-    <HoverCard
-      as={isClickable ? 'a' : 'div'}
-      href={isClickable ? url : undefined}
-      target={isClickable ? '_blank' : undefined}
-      rel={isClickable ? 'noopener noreferrer' : undefined}
-      baseStyle={baseStyle}
-    >
-      {content}
-    </HoverCard>
+      {/* Arrow — diagonal translate on hover */}
+      <motion.div
+        className="proj-arrow"
+        animate={{
+          x: hovered ? 3 : 0,
+          y: hovered ? -3 : 0,
+          color: hovered ? 'var(--cream)' : 'var(--muted)',
+          opacity: internal ? 0.25 : 1,
+        }}
+        transition={{ duration: 0.2 }}
+        style={{ fontSize: '1.2rem', paddingTop: '0.5rem' }}
+      >
+        {internal ? '⚙' : '↗'}
+      </motion.div>
+    </Tag>
   );
 }
 
 export default function Work() {
-  return (
-    <section id="work" style={{
-      padding: '6rem 2.5rem',
-      borderBottom: '1px solid var(--border)',
-    }}>
-      <div style={{
-        fontFamily: 'var(--mono)', fontSize: '0.68rem',
-        letterSpacing: '0.18em', textTransform: 'uppercase',
-        color: 'var(--red)', marginBottom: '1.2rem',
-        display: 'flex', alignItems: 'center', gap: '0.8rem',
-      }}>
-        <span style={{ display: 'block', width: '20px', height: '1px', background: 'var(--red)' }} />
-        Work
-      </div>
+  const { ref, isInView } = useScrollReveal();
 
-      <h2 style={{
-        fontFamily: 'var(--serif)',
-        fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-        fontWeight: 900, fontStyle: 'italic',
-        letterSpacing: '-0.02em', lineHeight: 1.05, marginBottom: '3rem',
-      }}>
+  return (
+    <section id="work" ref={ref} style={{ padding: '6rem 2.5rem', borderBottom: '1px solid var(--border)' }}>
+      <motion.div
+        initial={{ opacity: 0, x: -12 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.5 }}
+        style={{
+          fontFamily: 'var(--mono)', fontSize: '0.68rem',
+          letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: 'var(--red)', marginBottom: '1.2rem',
+          display: 'flex', alignItems: 'center', gap: '0.8rem',
+        }}
+      >
+        <motion.span
+          initial={{ width: 0 }}
+          animate={isInView ? { width: '20px' } : {}}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          style={{ display: 'block', height: '1px', background: 'var(--red)' }}
+        />
+        Work
+      </motion.div>
+
+      <motion.h2
+        initial={{ opacity: 0, y: 24 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.15, ease }}
+        style={{
+          fontFamily: 'var(--serif)',
+          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+          fontWeight: 900, fontStyle: 'italic',
+          letterSpacing: '-0.02em', lineHeight: 1.05, marginBottom: '3rem',
+        }}
+      >
         <b style={{ fontStyle: 'normal' }}>Selected</b><br /><i>Projects.</i>
-      </h2>
+      </motion.h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-        {projects.map(p => <ProjectCard key={p.num} {...p} />)}
+        {projects.map((p, i) => <ProjectCard key={p.num} {...p} index={i} />)}
       </div>
     </section>
   );
