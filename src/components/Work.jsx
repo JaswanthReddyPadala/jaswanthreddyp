@@ -154,7 +154,7 @@ export default function Work() {
           letterSpacing: '-0.02em', lineHeight: 1.05, marginBottom: '3rem',
         }}
       >
-        <b style={{ fontStyle: 'normal' }}>Selected</b><br /><i>Projects.</i>
+        <b style={{ fontStyle: 'normal' }}>What I've</b><br /><i>Built.</i>
       </motion.h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>

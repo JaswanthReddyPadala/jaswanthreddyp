@@ -103,11 +103,11 @@ export default function Navbar() {
               title={p.label}
               style={{
                 width: '10px', height: '10px', borderRadius: '50%',
-                background: p.swatch, border: 'none',
-                outline: palette === p.id ? `2px solid ${p.swatch}` : 'none',
+                background: p.swatches[mode], border: 'none',
+                outline: palette === p.id ? `2px solid ${p.swatches[mode]}` : 'none',
                 outlineOffset: '2px',
                 opacity: palette === p.id ? 1 : 0.45,
-                transition: 'opacity 0.2s',
+                transition: 'opacity 0.2s, background 0.3s',
               }}
             />
           ))}

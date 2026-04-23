@@ -15,8 +15,10 @@ function Spotlight() {
     const el = ref.current;
     if (!el) return;
     const onMove = (e) => {
-      const accent = getComputedStyle(document.documentElement).getPropertyValue('--red').trim();
-      el.style.background = `radial-gradient(650px circle at ${e.clientX}px ${e.clientY}px, ${accent}18 0%, transparent 70%)`;
+      const styles = getComputedStyle(document.documentElement);
+      const accent = styles.getPropertyValue('--red').trim();
+      const alpha = styles.getPropertyValue('--spotlight-alpha').trim() || '18';
+      el.style.background = `radial-gradient(650px circle at ${e.clientX}px ${e.clientY}px, ${accent}${alpha} 0%, transparent 70%)`;
     };
     window.addEventListener('mousemove', onMove);
     return () => window.removeEventListener('mousemove', onMove);
