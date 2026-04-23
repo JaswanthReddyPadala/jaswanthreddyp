@@ -52,16 +52,16 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.6, delay: 0.15, ease }}
-        whileHover={{ WebkitTextStroke: '1px rgba(255,45,0,0.14)', transition: { duration: 0.4 } }}
         style={{
           position: 'absolute', top: '50%', left: '50%',
           transform: 'translate(-48%, -55%)',
           fontFamily: 'var(--serif)',
           fontSize: 'clamp(100px, 22vw, 220px)',
           fontWeight: 900, color: 'transparent',
-          WebkitTextStroke: '1px rgba(255,45,0,0.07)',
+          WebkitTextStroke: '1px color-mix(in srgb, var(--red) 10%, transparent)',
           pointerEvents: 'none', userSelect: 'none',
           letterSpacing: '-0.04em', whiteSpace: 'nowrap',
+          transition: 'webkit-text-stroke 0.4s',
         }}
       >JASWANTH</motion.div>
 
@@ -91,7 +91,7 @@ export default function Hero() {
         {[
           { text: 'Brutally', color: 'var(--cream)', italic: false },
           { text: 'good',     color: 'var(--red)',   italic: true  },
-          { text: 'code.',    color: 'rgba(245,240,232,0.2)', italic: true },
+          { text: 'code.',    color: 'color-mix(in srgb, var(--cream) 20%, transparent)', italic: true },
         ].map(({ text, color, italic }, i) => (
           <div key={text} style={{ overflow: 'hidden' }}>
             <motion.div
@@ -144,7 +144,7 @@ export default function Hero() {
           >View Work</motion.a>
           <motion.a
             href="#contact"
-            whileHover={{ borderColor: 'rgba(245,240,232,0.35)', scale: 1.03 }}
+            whileHover={{ borderColor: 'var(--cream)', scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             style={{
               background: 'transparent', color: 'var(--cream)',

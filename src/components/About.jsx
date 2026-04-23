@@ -42,9 +42,9 @@ function StatCard({ n, l, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.1 + index * 0.08, ease }}
-      whileHover={{ borderColor: 'rgba(255,45,0,0.3)' }}
+      whileHover={{ borderColor: 'var(--red)' }}
       style={{
-        background: '#111', border: '1px solid var(--border)', padding: '1.8rem',
+        background: 'var(--card-bg)', border: '1px solid var(--border)', padding: '1.8rem',
         transition: 'border-color .3s',
       }}
     >

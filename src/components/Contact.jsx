@@ -157,7 +157,7 @@ export default function Contact() {
                       value={form[field]}
                       onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))}
                       style={inputStyle}
-                      onFocus={e => e.target.style.borderColor = 'rgba(255,45,0,0.5)'}
+                      onFocus={e => e.target.style.borderColor = 'var(--red)'}
                       onBlur={e => e.target.style.borderColor = 'var(--border)'}
                     />
                   </motion.div>
@@ -181,7 +181,7 @@ export default function Contact() {
                     value={form.message}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     style={inputStyle}
-                    onFocus={e => e.target.style.borderColor = 'rgba(255,45,0,0.5)'}
+                    onFocus={e => e.target.style.borderColor = 'var(--red)'}
                     onBlur={e => e.target.style.borderColor = 'var(--border)'}
                   />
                 </motion.div>

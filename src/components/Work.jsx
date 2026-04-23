@@ -48,21 +48,19 @@ function ProjectCard({ num, name, desc, tags, wip, url, internal, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.55, delay: index * 0.1, ease }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      animate={{
-        background: hovered ? '#161616' : '#111',
-        borderColor: hovered ? 'rgba(245,240,232,0.15)' : 'rgba(245,240,232,0.08)',
-      }}
+      onMouseEnter={e => { setHovered(true); e.currentTarget.style.background = 'var(--card-bg-hover)'; e.currentTarget.style.borderColor = 'var(--border-hover)'; }}
+      onMouseLeave={e => { setHovered(false); e.currentTarget.style.background = 'var(--card-bg)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
       className="proj-card"
       style={{
         display: 'grid', gridTemplateColumns: 'auto 1fr auto',
         gap: '2rem', alignItems: 'start',
         border: '1px solid var(--border)',
+        background: 'var(--card-bg)',
         padding: '2.2rem', color: 'inherit',
         position: 'relative', overflow: 'hidden',
         cursor: isClickable ? 'pointer' : 'default',
         textDecoration: 'none',
+        transition: 'background .2s, border-color .2s',
       }}
     >
       {/* Animated left accent bar */}
@@ -77,11 +75,10 @@ function ProjectCard({ num, name, desc, tags, wip, url, internal, index }) {
 
       {/* Project number */}
       <motion.div
-        animate={{ color: hovered ? 'rgba(255,45,0,0.35)' : 'rgba(255,45,0,0.15)' }}
-        transition={{ duration: 0.3 }}
         style={{
           fontFamily: 'var(--serif)', fontSize: '2.5rem',
           fontWeight: 900, fontStyle: 'italic', lineHeight: 1, minWidth: '60px',
+          color: 'var(--red)', opacity: hovered ? 1 : 0.4, transition: 'opacity .3s',
         }}
       >{num}</motion.div>
 
@@ -94,8 +91,9 @@ function ProjectCard({ num, name, desc, tags, wip, url, internal, index }) {
               fontFamily: 'var(--mono)', fontSize: '0.62rem',
               letterSpacing: '0.06em', textTransform: 'uppercase',
               padding: '0.2rem 0.6rem',
-              background: 'rgba(255,45,0,0.08)', color: 'var(--red)',
-              border: '1px solid rgba(255,45,0,0.2)',
+              background: 'color-mix(in srgb, var(--red) 8%, transparent)',
+              color: 'var(--red)',
+              border: '1px solid color-mix(in srgb, var(--red) 20%, transparent)',
             }}>{t}</span>
           ))}
           {wip && (
@@ -103,8 +101,9 @@ function ProjectCard({ num, name, desc, tags, wip, url, internal, index }) {
               fontFamily: 'var(--mono)', fontSize: '0.62rem',
               letterSpacing: '0.06em', textTransform: 'uppercase',
               padding: '0.2rem 0.6rem',
-              background: 'rgba(255,180,0,0.08)', color: '#ffb400',
-              border: '1px solid rgba(255,180,0,0.2)',
+              background: 'rgba(255,180,0,0.08)',
+              color: '#ffb400',
+              border: '1px solid rgba(255,180,0,0.25)',
             }}>In Progress</span>
           )}
         </div>

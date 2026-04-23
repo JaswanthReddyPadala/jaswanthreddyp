@@ -28,16 +28,14 @@ function ServiceCard({ icon, name, desc, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.55, delay: index * 0.1, ease }}
-      whileHover={{
-        y: -4,
-        borderColor: 'rgba(255,45,0,0.3)',
-        background: '#161616',
-      }}
+      whileHover={{ y: -4 }}
       style={{
-        background: '#111', border: '1px solid var(--border)',
+        background: 'var(--card-bg)', border: '1px solid var(--border)',
         padding: '2.2rem 1.8rem',
-        transition: 'background .2s',
+        transition: 'background .2s, border-color .2s',
       }}
+      onMouseEnter={e => { e.currentTarget.style.background = 'var(--card-bg-hover)'; e.currentTarget.style.borderColor = 'var(--red)'; }}
+      onMouseLeave={e => { e.currentTarget.style.background = 'var(--card-bg)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
     >
       <motion.span
         whileHover={{ scale: 1.1, x: 3 }}

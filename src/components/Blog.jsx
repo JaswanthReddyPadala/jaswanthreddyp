@@ -37,18 +37,17 @@ function PostCard({ date, title, excerpt, soon, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08, ease }}
-      whileHover={!soon ? {
-        background: '#161616',
-        borderColor: 'rgba(245,240,232,0.15)',
-        y: -3,
-      } : {}}
+      whileHover={!soon ? { y: -3 } : {}}
       style={{
-        background: '#111', border: '1px solid var(--border)',
+        background: 'var(--card-bg)', border: '1px solid var(--border)',
         padding: '2rem', position: 'relative',
         opacity: soon ? 0.4 : 1,
         pointerEvents: soon ? 'none' : 'auto',
         cursor: soon ? 'default' : 'pointer',
+        transition: 'background .2s, border-color .2s',
       }}
+      onMouseEnter={!soon ? e => { e.currentTarget.style.background = 'var(--card-bg-hover)'; e.currentTarget.style.borderColor = 'var(--border-hover)'; } : undefined}
+      onMouseLeave={!soon ? e => { e.currentTarget.style.background = 'var(--card-bg)'; e.currentTarget.style.borderColor = 'var(--border)'; } : undefined}
     >
       <div style={{
         fontFamily: 'var(--mono)', fontSize: '0.65rem',

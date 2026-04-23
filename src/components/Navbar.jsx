@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme, palettes } from '../hooks/useTheme';
 
 const links = [
   { href: '#about',    label: 'About' },
@@ -43,6 +44,7 @@ function NavLink({ href, label, onClick }) {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { palette, setPalette, mode, toggleMode } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -67,7 +69,7 @@ export default function Navbar() {
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           padding: '0 2.5rem', height: '52px',
           borderBottom: '1px solid var(--border)',
-          background: scrolled ? 'rgba(12,12,12,0.97)' : 'rgba(12,12,12,0.92)',
+          background: scrolled ? 'var(--nav-bg-scrolled)' : 'var(--nav-bg)',
           backdropFilter: 'blur(8px)',
           transition: 'background 0.3s',
         }}
@@ -89,6 +91,41 @@ export default function Navbar() {
             </motion.div>
           ))}
         </ul>
+
+        {/* Palette swatches + mode toggle */}
+        <div className="nav-palettes" style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+          {palettes.map(p => (
+            <motion.button
+              key={p.id}
+              onClick={() => setPalette(p.id)}
+              whileHover={{ scale: 1.25 }}
+              whileTap={{ scale: 0.9 }}
+              title={p.label}
+              style={{
+                width: '10px', height: '10px', borderRadius: '50%',
+                background: p.swatch, border: 'none',
+                outline: palette === p.id ? `2px solid ${p.swatch}` : 'none',
+                outlineOffset: '2px',
+                opacity: palette === p.id ? 1 : 0.45,
+                transition: 'opacity 0.2s',
+              }}
+            />
+          ))}
+          <motion.button
+            onClick={toggleMode}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
+            title={mode === 'dark' ? 'Switch to light' : 'Switch to dark'}
+            style={{
+              background: 'none', border: 'none', color: 'var(--muted)',
+              fontFamily: 'var(--mono)', fontSize: '0.75rem',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              width: '18px', height: '18px', marginLeft: '2px',
+            }}
+          >
+            {mode === 'dark' ? '○' : '●'}
+          </motion.button>
+        </div>
 
         {/* Desktop Hire Me */}
         <motion.a
@@ -130,7 +167,7 @@ export default function Navbar() {
               display: 'none',
               position: 'fixed', top: 0, right: 0, bottom: 0,
               width: '75vw', maxWidth: '320px',
-              background: '#0f0f0f',
+              background: 'var(--drawer-bg)',
               borderLeft: '1px solid var(--border)',
               zIndex: 190,
               flexDirection: 'column',

@@ -18,8 +18,8 @@ export default function Footer() {
         © 2026 Jaswanth Reddy Padala · Full-Stack · AI · Freelance
       </span>
       <motion.span
-        whileHover={{ color: 'rgba(255,45,0,0.7)' }}
-        style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: '0.85rem', color: 'rgba(255,45,0,0.4)', cursor: 'default' }}
+        whileHover={{ color: 'var(--red)' }}
+        style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: '0.85rem', color: 'color-mix(in srgb, var(--red) 40%, transparent)', cursor: 'default' }}
       >
         Built with intent.
       </motion.span>
