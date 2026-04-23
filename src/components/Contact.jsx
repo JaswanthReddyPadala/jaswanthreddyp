@@ -24,10 +24,36 @@ function SocialLink({ label, href }) {
   );
 }
 
+const FORMSPREE = 'https://formspree.io/f/mvzdvegv';
+
 export default function Contact() {
   const { ref, isInView } = useScrollReveal();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(false);
+    try {
+      const res = await fetch(FORMSPREE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name: form.name, email: form.email, message: form.message }),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const inputStyle = {
     width: '100%', background: 'transparent',
@@ -118,21 +144,64 @@ export default function Contact() {
             {sent ? (
               <motion.div
                 key="thanks"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                style={{
-                  fontFamily: 'var(--serif)', fontSize: '1.3rem',
-                  fontStyle: 'italic', color: 'var(--cream)', padding: '3rem 0',
-                }}
+                transition={{ duration: 0.4 }}
+                style={{ padding: '3rem 0', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2rem' }}
               >
-                Message received. I'll be in touch.
+                {/* Stamp */}
+                <motion.div
+                  initial={{ scale: 2.5, rotate: -12, opacity: 0 }}
+                  animate={{ scale: 1, rotate: -6, opacity: 1 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 18, delay: 0.1 }}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    border: '3px solid var(--red)', borderRadius: '4px',
+                    padding: '0.5rem 1.4rem',
+                    fontFamily: 'var(--mono)', fontSize: '1.6rem', fontWeight: 700,
+                    letterSpacing: '0.18em', textTransform: 'uppercase',
+                    color: 'var(--red)',
+                    boxShadow: '3px 3px 0 var(--red)',
+                    opacity: 0.85,
+                    transform: 'rotate(-6deg)',
+                  }}
+                >
+                  SENT ✓
+                </motion.div>
+
+                {/* Message */}
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45, duration: 0.5 }}
+                  style={{ fontFamily: 'var(--serif)', fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--cream)', lineHeight: 1.6 }}
+                >
+                  Message received.<br />I'll be in touch.
+                </motion.p>
+
+                {/* Send another */}
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                  onClick={() => { setSent(false); setForm({ name: '', email: '', message: '' }); setError(false); }}
+                  whileHover={{ color: 'var(--red)' }}
+                  style={{
+                    background: 'none', border: 'none',
+                    fontFamily: 'var(--mono)', fontSize: '0.65rem',
+                    letterSpacing: '0.12em', textTransform: 'uppercase',
+                    color: 'var(--muted)', textDecoration: 'underline',
+                    textUnderlineOffset: '3px',
+                  }}
+                >
+                  ← Send another message
+                </motion.button>
               </motion.div>
             ) : (
               <motion.form
                 key="form"
-                onSubmit={e => { e.preventDefault(); setSent(true); }}
+                onSubmit={handleSubmit}
                 style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}
               >
                 {[
@@ -186,10 +255,20 @@ export default function Contact() {
                   />
                 </motion.div>
 
+                {error && (
+                  <p style={{
+                    fontFamily: 'var(--mono)', fontSize: '0.65rem',
+                    color: 'var(--red)', letterSpacing: '0.08em',
+                  }}>
+                    Something went wrong. Please try again or email me directly.
+                  </p>
+                )}
+
                 <motion.button
                   type="submit"
-                  whileHover={{ opacity: 0.85, scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={submitting}
+                  whileHover={!submitting ? { opacity: 0.85, scale: 1.01 } : {}}
+                  whileTap={!submitting ? { scale: 0.98 } : {}}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
@@ -198,9 +277,11 @@ export default function Contact() {
                     color: 'var(--black)', padding: '1rem',
                     fontFamily: 'var(--mono)', fontSize: '0.72rem',
                     letterSpacing: '0.15em', textTransform: 'uppercase',
-                    cursor: 'pointer', marginTop: '0.4rem',
+                    cursor: submitting ? 'default' : 'pointer',
+                    marginTop: '0.4rem',
+                    opacity: submitting ? 0.6 : 1,
                   }}
-                >Send Message →</motion.button>
+                >{submitting ? 'Sending...' : 'Send Message →'}</motion.button>
               </motion.form>
             )}
           </AnimatePresence>

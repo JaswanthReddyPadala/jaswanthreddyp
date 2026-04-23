@@ -129,22 +129,6 @@ export default function About() {
             I don't just write code. I think about what the product needs to do, who it needs to reach, and how to make it work reliably in the real world.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4, ease }}
-            style={{
-              fontFamily: 'var(--mono)', fontSize: '0.72rem',
-              letterSpacing: '0.08em', color: 'var(--muted)',
-              borderLeft: '2px solid var(--red)', paddingLeft: '1rem',
-              marginTop: '1.5rem', lineHeight: 1.8,
-            }}
-          >
-            Currently building <b>Bodhi</b> — an enterprise AI agent platform<br />
-            LangGraph · FastAPI · Next.js · Azure Container Apps<br />
-            Multi-LLM · Skills/Plugins System · Production deployed
-          </motion.div>
         </div>
       </div>
     </section>

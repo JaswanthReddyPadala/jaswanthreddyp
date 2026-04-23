@@ -21,15 +21,6 @@ const projects = [
     url: 'https://vdlglobalimpex.com/',
     internal: false,
   },
-  {
-    num: '03',
-    name: 'Bodhi — AI Agent Platform',
-    desc: 'Enterprise-grade agentic AI platform at Presidio. LangGraph workflows, skills/plugins architecture, multi-LLM support (Claude, GPT, Gemini), and a Next.js frontend. Powers real client deployments on Azure.',
-    tags: ['AI Agents', 'LangGraph', 'FastAPI', 'Next.js', 'Azure'],
-    url: null,
-    wip: false,
-    internal: true,
-  },
 ];
 
 const ease = [0.22, 1, 0.36, 1];

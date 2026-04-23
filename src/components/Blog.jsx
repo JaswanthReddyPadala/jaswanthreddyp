@@ -4,26 +4,14 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 const posts = [
   {
     date: 'Coming soon',
-    title: 'Building Bodhi: Architecture of an Enterprise AI Agent Platform',
-    excerpt: 'How we designed the skills/plugins system, LangGraph workflows, and Azure infrastructure for a multi-LLM agentic platform.',
-    soon: true,
-  },
-  {
-    date: 'Coming soon',
     title: "Why Your Business Needs a Website in 2026 — Not a Social Media Page",
     excerpt: "A practical argument for owning your digital presence instead of renting it from platforms that can change the rules overnight.",
     soon: true,
   },
   {
     date: 'Coming soon',
-    title: 'React useEffect: When to Use It and When to Stop',
-    excerpt: "Most useEffect calls in real codebases shouldn't exist. Here's how to identify them and what to do instead.",
-    soon: true,
-  },
-  {
-    date: 'Coming soon',
-    title: "AI Agents in Production: What Nobody Tells You",
-    excerpt: 'Lessons from building and deploying real agentic workflows — the gaps between demos and what actually ships.',
+    title: 'React useOptimistic: Build UIs That Feel Instant',
+    excerpt: "How to use React 19's useOptimistic hook to give users immediate feedback before the server responds — and handle rollbacks cleanly.",
     soon: true,
   },
 ];
