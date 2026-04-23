@@ -1,128 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jaswanth Reddy Padala</title>
-    <link rel="stylesheet" href="./files/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <link rel="stylesheet" href="./files/mobile.css">
-        
-</head>
-<body>
-    <!-- <div class="loader_wrap">
-        <div class="ripple"></div>
-        <div class="ripple1"></div>
-        <div class="ripple2"></div>
-    </div> -->
-
-    <div class="content">
-
-        <header class="header flex">
-            <h1 class="logo">
-                JASWANTH
-            </h1>
-            <nav class="nav ">
-                <ul class="nav_list flex">
-                    <a href="#home"><li class="nav_item">HOME</li></a>
-                    <a href="#about"><li class="nav_item">ABOUT</li></a>
-                    <a href="#work"><li class="nav_item">WORK</li></a>
-                    <a href="#contact"><li class="nav_item">CONTACT</li></a>
-                </ul>
-            </nav>
-        </header>
-        
-        
-        <section id="home">
-            <div class="mypicture_box flex">
-                <div class="mypicture_bg"></div>
-                <img class="mypicture" src="./files/images/me.png" alt="">
-            </div>
-            <div class="home_right">
-                <p>Hey, I AM</p>
-                <h1>JASWANTH</h1>
-                <hr>
-                <p>Aspiring Full Stack Web Developer</p>
-            </div>
-        </section>
-        
-        <section id="about">
-            <div class="aboutme">
-                <h1>ABOUT</h1>
-                <p>
-                    <span> Hi, I am happy that you are reading about me. 😉 </span>
-                    <br><br>
-                    " I am an enthusiastic learner who loves to learn coding and get hands dirty with it. I am a newbie in web development and I am aspiring to become a Full Stack web developer. I am constantly improving my skills. I love making cool projects and want to explore more stuff and do much more fun projects.In future I want to share my knowledge and teach web development." 
-                </p>
-                </div>
-
-            <div class="skills">
-                <h1>SKILLS</h1>
-                <div class="skill_set">
-                    <div class="skill_item">Javascript</div>
-                    <div class="skill_item">NodeJS</div>
-                    <div class="skill_item">Python</div>
-                    <div class="skill_item">Git</div>
-                    <div class="skill_item">HTML</div>
-                    <div class="skill_item">CSS</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="work">
-            <div class="projects">
-                <div class="project_expand">
-                    <h1>PROJECTS</h1>
-                    <a href="./projects.html"><p>Explore my projects &rightarrow;</p></a>
-                </div>
-                <div class="project_illustration">
-                    <img src="./files/images/projectillustration.svg" alt="">
-                </div>
-            </div>
-            <div class="blogs">
-                <div class="blog_illustration">
-                    <img src="./files/images/blogillustration.svg" alt="">
-                </div>
-                <div class="blog_expand">
-                    <h1 style="color:var(--hai);">BLOGS</h1>
-                    <a href="./blogs.html"><p style="border-color:var(--yellow);">Explore my blogs &rightarrow;</p></a>
-                </div>
-            </div>
-        </section>
-
-        <footer id="contact">
-            <div style="border:none;margin-bottom:0;" class="contactme">
-                <h1>CONTACT</h1>
-            </div>
-            <div class="contact_content">
-
-                <div class="contact_top">
-                    <!-- <form action="post" class="contact_form">
-                        <input type="text" name="name" id="contact-name" placeholder="Enter your name" autocomplete="off">
-                        <input type="email" name="email" id="contact-email" placeholder="Enter your E-mail">
-                        <div class="text" autocomplete="off">
-                            
-                            <textarea name="comment" id="contact-comment" cols="40" rows="10" placeholder="Leave your message here..." autocomplete="off" autocapitalize="on"></textarea>
-                            <button type="submit" id="contact-send" >SEND &rightarrow;</button>
-                        </div>
-                    </form> -->
-                    
-                    <div class="social">
-                        <a href="https://www.linkedin.com/in/jaswanthreddypadala/" target="_blank" class="contact_item"><i class="fab fa-linkedin fa-3x"></i></a>
-                        <a href="https://github.com/JaswanthReddyPadala/" target="_blank" class="contact_item">
-                            <i class="fab fa-github fa-3x"></i>   
-                        </a>
-                        <a href="https://twitter.com/jaswanthreddyp2" target="_blank" class="contact_item"><i class="fab fa-twitter fa-3x"></i></a>
-                    </div>
-                </div>
-                <div class="contact_details">
-                    <h1>&copy;JaswanthReddyPadala</h1>
-                    <p>Made with ❤,
-                        but used HTML, CSS and NETLIFY to host this online.</p>
-                    </div>
-                </div>
-        </footer>
-    </div>
-        <script src="./files/index.js"></script>
-    </body>
-    </html>
+    <meta name="description" content="Full-stack developer & AI engineer. Building websites, web apps, and AI-powered products." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400;1,900&family=Fira+Code:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

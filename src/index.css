@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400;1,900&family=Fira+Code:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #ff2d00;
+  --cream: #f5f0e8;
+  --black: #0c0c0c;
+  --dark: #111;
+  --muted: rgba(245,240,232,0.35);
+  --border: rgba(245,240,232,0.08);
+  --mono: 'Fira Code', monospace;
+  --serif: 'Playfair Display', serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--red); }
+
+a { text-decoration: none; color: inherit; }
