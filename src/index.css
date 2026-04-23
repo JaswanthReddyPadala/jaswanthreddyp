@@ -235,8 +235,8 @@ a { text-decoration: none; color: inherit; }
   border-color: var(--red);
 }
 
-/* Hide custom cursor on touch devices */
-@media (hover: none) {
+/* Hide custom cursor on touch devices and tablets */
+@media (hover: none), (max-width: 1024px) {
   .cursor-dot, .cursor-ring { display: none; }
   *, *::before, *::after { cursor: auto !important; }
 }
